@@ -1,0 +1,32 @@
+﻿@inject Infrastructure.Settings.ApplicationSettings applicationSettings
+
+@{
+	var cultureSettings = applicationSettings.CultureSettings;
+	var supportedCultureNames = cultureSettings.SupportedCultureNames;
+
+	if (supportedCultureNames == null || supportedCultureNames.Length <= 1)
+	{
+		return;
+	}
+
+	var currentCultureName = System.Threading.Thread.CurrentThread.CurrentUICulture.Name;
+}
+
+<span class="d-flex">
+	@foreach (var supportedCultureName in supportedCultureNames)
+	{
+		var country = supportedCultureName[3..].ToLower();
+
+		var supportedCulture = new System.Globalization.CultureInfo(name: supportedCultureName);
+
+		var language = supportedCulture.Parent.NativeName;
+
+		if (currentCultureName != supportedCultureName)
+		{
+			<a href="/ChangeCulture/@(supportedCultureName)" class="nav-link">
+				@(language)
+				<span class="fi fi-@(country)"></span>
+			</a>
+		}
+	}
+</span>

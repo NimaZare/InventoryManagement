@@ -1,0 +1,156 @@
+﻿@page
+@model WebApp.Pages.Admin.Products.IndexModel
+
+@{
+    var pageTitle = $"{Resources.DataDictionary.ListOf} {Resources.DataDictionary.Products}";
+    ViewData["Title"] = pageTitle;
+    int tableIndex = 1;
+}
+
+<partial name="PartialViews/_DisplayPageMessages" />
+<partial name="PartialViews/_DisplayToastMessages" />
+
+<br />
+<h3 class="mb-3 text-center">
+    @(pageTitle)
+</h3>
+<hr class="mt-4" />
+
+<a asp-page="Create" class="btn btn-primary">
+    <i class="mx-1 bi bi-plus-square"></i>
+    @(Resources.ButtonCaptions.Create) @(Resources.DataDictionary.Product)
+</a>
+
+<br />
+<br />
+<form>
+    <div class="row border">
+        <div class="col-4 border">
+            <div class="form-group">
+                <div class="input-group my-2 col-3">
+                    <button type="submit" class="input-group-text btn btn-info col-4"><i class="bi bi-search"></i>&ensp; @(Resources.DataDictionary.Search)</button>
+                    <input type="text" asp-for="SearchString" class="form-control col-3" placeholder="@(Resources.DataDictionary.ProductName)" />
+                </div>
+            </div>
+        </div>
+        <div class="col-8 border">
+            <div class="form-group">
+                <div class="input-group my-2">
+                    <button type="submit" class="input-group-text btn btn-info"><i class="bi bi-search"></i>&ensp; @(Resources.DataDictionary.Search) @(Resources.DataDictionary.EntryDateTime)</button>
+                    <input type="date" asp-for="EntryDateTimeSearch" class="form-control" />
+                    &ensp;
+                    <button type="submit" class="input-group-text btn btn-info"><i class="bi bi-search"></i>&ensp; @(Resources.DataDictionary.Search) @(Resources.DataDictionary.LeavingTheWarehouseDateTime)</button>
+                    <input type="date" asp-for="LeavingTheWarehouseDateTimeSearch" class="form-control" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<br />
+<br />
+
+<table class="table">
+    <thead class="text-center">
+        <tr>
+            <th>
+                @(Resources.DataDictionary.RowNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductViewModel[0].Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductViewModel[0].ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductViewModel[0].Count)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductViewModel[0].ProductOrigin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductViewModel[0].ReceiptNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductViewModel[0].EntryDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductViewModel[0].LeavingTheWarehouseDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductViewModel[0].ClearanceDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductViewModel[0].InsertDateTime)
+            </th>
+            @if (User.IsInRole(UserRoles.Administrator) || User.IsInRole(UserRoles.Warehouseman))
+            {
+                <th>
+                    @(Resources.DataDictionary.Actions)
+                </th>
+            }
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        @if (Model.ProductViewModel.Any())
+        {
+            @foreach (var item in Model.ProductViewModel)
+            {
+                <tr>
+                    <td>
+                        @(tableIndex)
+                    </td>
+                    <td>
+                        @if (item.Category == ProductCategories.Vitamins)
+                        {
+                            @(DataDictionary.Vitamins)
+                        }
+                        else
+                        {
+                            @(DataDictionary.Minerals)
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Count)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductOrigin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReceiptNumber)
+                    </td>
+                    <td>
+                        @(item.EntryDateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
+                    </td>
+                    <td>
+                        @(item.LeavingTheWarehouseDateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
+                    </td>
+                    <td>
+                        @(item.ClearanceDateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
+                    </td>
+                    <td>
+                        @(item.InsertDateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
+                    </td>
+                    <td>
+                        @if (User.IsInRole(UserRoles.Administrator) || User.IsInRole(UserRoles.Warehouseman))
+                        {
+                            <a asp-page="./Edit" asp-route-id="@item.ID" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="@(Resources.Messages.ToolTipEdit)" class="text-decoration-none">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a asp-page="./Details" asp-route-id="@item.ID" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="@(Resources.Messages.ToolTipInfo)" class="text-decoration-none">
+                                <i class="bi bi-info-circle-fill"></i>
+                            </a>
+                            <a asp-page="./Delete" asp-route-id="@item.ID" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="@(Resources.Messages.ToolTipDelete)" class="text-decoration-none">
+                                <i class="bi bi-trash3-fill"></i>
+                            </a>
+                        }
+                    </td>
+                </tr>
+
+                tableIndex++;
+            }
+        }
+    </tbody>
+</table>

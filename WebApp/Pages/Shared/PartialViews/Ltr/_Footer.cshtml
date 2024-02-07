@@ -1,0 +1,19 @@
+﻿@inject Infrastructure.Settings.ApplicationSettings applicationSettings
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor httpContextAccessor
+
+<footer class="footer border-top py-3 text-muted fixed-bottom bg-body">
+	<div class="container text-muted">
+		&copy;@DateTime.Now.Year
+
+		@if (applicationSettings != null && string.IsNullOrWhiteSpace(applicationSettings.Version) == false)
+		{
+			var version = $" - {DataDictionary.Version} {applicationSettings.Version}";
+
+			@(version)
+		}
+
+	</div>
+
+	<partial name="PartialViews/_ThemeSelector" />
+
+</footer>

@@ -1,0 +1,97 @@
+﻿@page
+@model WebApp.Pages.Admin.Funds.IndexModel
+
+@{
+    var pageTitle = $"{Resources.DataDictionary.ListOf} {Resources.DataDictionary.Funds}";
+    ViewData["Title"] = pageTitle;
+    int tableIndex = 1;
+}
+
+<partial name="PartialViews/_DisplayPageMessages" />
+<partial name="PartialViews/_DisplayToastMessages" />
+
+<br />
+<h3 class="mb-3 text-center">
+    @(pageTitle)
+</h3>
+<hr class="mt-4" />
+<a asp-page="Create" class="btn btn-primary">
+    <i class="mx-1 bi bi-plus-square"></i>
+    @(Resources.ButtonCaptions.Create) @(Resources.DataDictionary.Fund)
+</a>
+
+<br />
+<br />
+<form>
+    <div class="form-group row col-5">
+        <div class="input-group my-2">
+            <button type="submit" class="input-group-text btn btn-info col-5"><i class="bi bi-search"></i>&ensp; @(Resources.DataDictionary.Search) @(Resources.DataDictionary.ChargeDateTime)</button>
+            <input type="date" asp-for="SearchDateTime" class="form-control" />
+        </div>
+    </div>
+</form>
+<br />
+<br />
+
+<table class="table">
+    <thead class="text-center">
+        <tr>
+            <th>
+                @(Resources.DataDictionary.RowNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FundViewModel[0].ChargeDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FundViewModel[0].BalanceCharge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FundViewModel[0].ChargeUsed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FundViewModel[0].InsertDateTime)
+            </th>
+            <th>
+                @(Resources.DataDictionary.Actions)
+            </th>
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        @if(Model.FundViewModel.Any())
+        {
+            @foreach (var item in Model.FundViewModel)
+            {
+                <tr>
+                    <td>
+                        @(tableIndex)
+                    </td>
+                    <td>
+                        @(item.ChargeDateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BalanceCharge)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ChargeUsed)
+                    </td>
+                    <td>
+                        @(item.InsertDateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.ID" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="@(Resources.Messages.ToolTipEdit)" class="text-decoration-none">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <a asp-page="./Details" asp-route-id="@item.ID" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="@(Resources.Messages.ToolTipInfo)" class="text-decoration-none">
+                            <i class="bi bi-info-circle-fill"></i>
+                        </a>
+                        <a asp-page="./Delete" asp-route-id="@item.ID" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="@(Resources.Messages.ToolTipDelete)" class="text-decoration-none">
+                            <i class="bi bi-trash3-fill"></i>
+                        </a>
+                    </td>
+                </tr>
+
+                tableIndex++;
+            }
+        }
+    </tbody>
+</table>

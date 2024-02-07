@@ -1,0 +1,27 @@
+﻿<div class="container px-4 py-5" id="hanging-icons">
+    <h3 class="pb-2 border-bottom">@(Resources.DataDictionary.Dashboard)</h3>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+
+        <div class="col d-flex align-items-start  mb-sm-2 mb-lg-5">
+            <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <i class="bi bi-cash-coin"></i>
+            </div>
+            <div>
+                <a class="fs-5 text-body-emphasis text-decoration-none" asp-page="/Admin/Funds/Index">
+                    @(Resources.DataDictionary.FundManager)
+                </a>
+            </div>
+        </div>
+        <div class="col d-flex align-items-start  mb-sm-2 mb-lg-5">
+            <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <i class="bi bi-car-front-fill"></i>
+            </div>
+            <div>
+                <a class="fs-5 text-body-emphasis text-decoration-none" asp-page="/Admin/Missions/Index">
+                    @(Resources.DataDictionary.MissionManager)
+                </a>
+            </div>
+        </div>
+        
+    </div>
+</div>

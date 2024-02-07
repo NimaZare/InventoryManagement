@@ -1,0 +1,56 @@
+﻿@page
+@model IndexModel
+@{
+    var pageTitle = Resources.PageTitles.Home;
+    ViewData["Title"] = pageTitle;
+}
+
+@if (User == null || User.Identity == null || User.Identity.IsAuthenticated == false)
+{
+    <div class="container my-5">
+        <div class="p-5 text-center bg-body-tertiary rounded-3">
+            <h1 class="fs-2 text-body-emphasis">
+                @(Resources.Messages.StartIndex)
+            </h1>
+            <p class="lead">
+                @(Resources.Messages.StartIndexInfo)
+            </p>
+        </div>
+    </div>
+}
+else
+{
+    if (User.IsInRole(UserRoles.Administrator))
+    {
+        <partial name="PartialViews/_AdminIndex" />
+    }
+    else if (User.IsInRole(UserRoles.Accountant))
+    {
+        <partial name="PartialViews/_AccountantIndex" />
+    }
+    else if (User.IsInRole(UserRoles.Warehouseman))
+    {
+        <partial name="PartialViews/_WarehousemanIndex" />
+    }
+    else if (User.IsInRole(UserRoles.SalesExpert))
+    {
+        <partial name="PartialViews/_SalesExpertIndex" />
+    }
+    else if (User.IsInRole(UserRoles.Collector))
+    {
+        <partial name="PartialViews/_CollectorIndex" />
+    }
+    else
+    {
+        <div class="container my-5">
+            <div class="p-5 text-center bg-body-tertiary rounded-3">
+                <h1 class="fs-2 text-body-emphasis">
+                    @(Resources.Messages.NewUserIndexTitle)
+                </h1>
+                <p class="lead">
+                    @(Resources.Messages.NewUserIndexText)
+                </p>
+            </div>
+        </div>
+    }
+}

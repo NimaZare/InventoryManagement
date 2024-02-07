@@ -1,0 +1,32 @@
+﻿<ul class="navbar-nav mb-2 mb-lg-0">
+
+    @if (User == null || User.Identity == null || User.Identity.IsAuthenticated == false)
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-page="/Account/Register">
+                @(Resources.PageTitles.Register)
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" asp-page="/Account/Login">
+                @(Resources.PageTitles.Login)
+            </a>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-page="/Account/Profile">
+                @(User.Identity.Name)
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" asp-page="/Account/Logout">
+                @(Resources.PageTitles.Logout)
+            </a>
+        </li>
+    }
+
+</ul>

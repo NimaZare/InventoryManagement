@@ -1,0 +1,116 @@
+﻿@page
+@model WebApp.Pages.Admin.Factors.IndexModel
+
+@{
+    var pageTitle = $"{Resources.DataDictionary.ListOf} {Resources.DataDictionary.Factors}";
+    ViewData["Title"] = pageTitle;
+    int tableIndex = 1;
+}
+
+<partial name="PartialViews/_DisplayPageMessages" />
+<partial name="PartialViews/_DisplayToastMessages" />
+
+<br />
+<h3 class="mb-3 text-center">
+    @(pageTitle)
+</h3>
+<hr class="mt-4" />
+
+<a asp-page="Create" class="btn btn-primary">
+    <i class="mx-1 bi bi-plus-square"></i>
+    @(Resources.ButtonCaptions.Create) @(Resources.DataDictionary.Factor)
+</a>
+
+<br />
+<br />
+<form>
+    <div class="row border">
+        <div class="col-5 border">
+            <div class="form-group row">
+                <div class="input-group my-2">
+                    <button type="submit" class="input-group-text btn btn-info col-3"><i class="bi bi-search"></i>&ensp; @(Resources.DataDictionary.Search)</button>
+                    <input type="text" asp-for="SearchString" class="form-control col-3" placeholder="@(Resources.DataDictionary.NationalCode) @(Resources.DataDictionary.Customer)" maxlength="10" />
+                </div>
+            </div>
+        </div>
+        <div class="col-7 border">
+            <div class="form-group">
+                <div class="input-group my-2">
+                    <button type="submit" class="input-group-text btn btn-info col-4"><i class="bi bi-search"></i>&ensp; @(Resources.DataDictionary.Search) @(Resources.DataDictionary.InsertDateTime)</button>
+                    <input type="date" asp-for="SearchDateTime" class="form-control" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<br />
+<br />
+
+<table class="table">
+    <thead class="text-center">
+        <tr>
+            <th>
+                @(Resources.DataDictionary.RowNumber)
+            </th>
+            <th>
+                @(Resources.DataDictionary.FactorID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FactorViewModel[0].Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FactorViewModel[0].TotalAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FactorViewModel[0].InsertDateTime)
+            </th>
+            @if (User.IsInRole(UserRoles.Administrator) || User.IsInRole(UserRoles.SalesExpert) || User.IsInRole(UserRoles.Accountant) || User.IsInRole(UserRoles.Warehouseman))
+            {
+                <th>
+                    @(Resources.DataDictionary.Actions)
+                </th>
+            }
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        @if (Model.FactorViewModel.Count >= 1)
+        {
+            @foreach (var item in Model.FactorViewModel)
+            {
+                <tr>
+                    <td>
+                        @(tableIndex)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalAmount)
+                    </td>
+                    <td>
+                        @(item.InsertDateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
+                    </td>
+                    @if (User.IsInRole(UserRoles.Administrator) || User.IsInRole(UserRoles.SalesExpert) || User.IsInRole(UserRoles.Accountant) || User.IsInRole(UserRoles.Warehouseman))
+                    {
+                        <td>
+                            <a asp-page="./Details" asp-route-id="@item.ID" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="@(Resources.Messages.ToolTipInfo)" class="text-decoration-none">
+                                <i class="bi bi-info-circle-fill"></i>
+                            </a>
+                            @if (User.IsInRole(UserRoles.Administrator) || User.IsInRole(UserRoles.SalesExpert))
+                            {
+                                <a asp-page="./Delete" asp-route-id="@item.ID" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="@(Resources.Messages.ToolTipDelete)" class="text-decoration-none">
+                                    <i class="bi bi-trash3-fill"></i>
+                                </a>
+                            }
+                        </td>
+                    }
+                </tr>
+
+                tableIndex++;
+            }
+        }
+    </tbody>
+</table>

@@ -1,0 +1,104 @@
+﻿@page
+@model WebApp.Pages.Admin.Missions.IndexModel
+
+@{
+    var pageTitle = $"{Resources.DataDictionary.ListOf} {Resources.DataDictionary.Missions}";
+    ViewData["Title"] = pageTitle;
+    int tableIndex = 1;
+}
+
+<partial name="PartialViews/_DisplayPageMessages" />
+<partial name="PartialViews/_DisplayToastMessages" />
+
+<br />
+<h3 class="mb-3 text-center">
+    @(pageTitle)
+</h3>
+<hr class="mt-4" />
+
+<a asp-page="Create" class="btn btn-primary">
+    <i class="mx-1 bi bi-plus-square"></i>
+    @(Resources.ButtonCaptions.Create) @(Resources.DataDictionary.Mission)
+</a>
+
+<br />
+<br />
+<form>
+    <div class="row border">
+        <div class="col-5 border">
+            <div class="form-group">
+                <div class="input-group my-2">
+                    <button type="submit" class="input-group-text btn btn-info"><i class="bi bi-search"></i>&ensp; @(Resources.DataDictionary.Search)</button>
+                    <input type="text" asp-for="SearchString" class="form-control" placeholder="@(Resources.DataDictionary.MissionName)" />
+                </div>
+            </div>
+        </div>
+        <div class="col-7 border">
+            <div class="form-group">
+                <div class="input-group my-2">
+                    <button type="submit" class="input-group-text btn btn-info col-4"><i class="bi bi-search"></i>&ensp; @(Resources.DataDictionary.Search) @(Resources.DataDictionary.MissionDateTime)</button>
+                    <input type="date" asp-for="SearchDateTime" class="form-control" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<br />
+<br />
+
+<table class="table">
+    <thead class="text-center">
+        <tr>
+            <th>
+                @(Resources.DataDictionary.RowNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MissionViewModel[0].MissionName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MissionViewModel[0].MissionDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MissionViewModel[0].InsertDateTime)
+            </th>
+            <th>
+                @(Resources.DataDictionary.Actions)
+            </th>
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        @if (Model.MissionViewModel.Any())
+        {
+            @foreach (var item in Model.MissionViewModel)
+            {
+                <tr>
+                    <td>
+                        @(tableIndex)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MissionName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MissionDateTime)
+                    </td>
+                    <td>
+                        @(item.InsertDateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.ID" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="@(Resources.Messages.ToolTipEdit)" class="text-decoration-none">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <a asp-page="./Details" asp-route-id="@item.ID" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="@(Resources.Messages.ToolTipInfo)" class="text-decoration-none">
+                            <i class="bi bi-info-circle-fill"></i>
+                        </a>
+                        <a asp-page="./Delete" asp-route-id="@item.ID" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="@(Resources.Messages.ToolTipDelete)" class="text-decoration-none">
+                            <i class="bi bi-trash3-fill"></i>
+                        </a>
+                    </td>
+                </tr>
+
+                tableIndex++;
+            }
+        }
+    </tbody>
+</table>

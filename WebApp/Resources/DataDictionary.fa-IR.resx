@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Accountant" xml:space="preserve">
+    <value>حسابدار</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>عملیات</value>
+  </data>
+  <data name="AddProductToFactor" xml:space="preserve">
+    <value>افزودن کالا</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>آدرس</value>
+  </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>مدیر</value>
+  </data>
+  <data name="AllTotalAmount" xml:space="preserve">
+    <value>جمع کل مبلغ</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>شرکت آرمان طب نوین بیستون</value>
+  </data>
+  <data name="Author" xml:space="preserve">
+    <value>رویا نجفی</value>
+  </data>
+  <data name="Auto" xml:space="preserve">
+    <value>خودکار</value>
+  </data>
+  <data name="BalanceCharge" xml:space="preserve">
+    <value>مبلغ شارژ</value>
+  </data>
+  <data name="BirthDateTime" xml:space="preserve">
+    <value>تاریخ تولد</value>
+  </data>
+  <data name="ChargeDateTime" xml:space="preserve">
+    <value>تاریخ شارژ</value>
+  </data>
+  <data name="ChargeUsed" xml:space="preserve">
+    <value>مبلغ هزینه شده</value>
+  </data>
+  <data name="Checkout" xml:space="preserve">
+    <value>تسویه حساب</value>
+  </data>
+  <data name="ClearanceDateTime" xml:space="preserve">
+    <value>تاریخ ترخیص</value>
+  </data>
+  <data name="Collector" xml:space="preserve">
+    <value>تحصیلدار</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>تکرار گذرواژه</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>تعداد</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>ایجاد</value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value>مشتری</value>
+  </data>
+  <data name="CustomerFactorsList" xml:space="preserve">
+    <value>فهرست فاکتورهای مشتری</value>
+  </data>
+  <data name="CustomerID" xml:space="preserve">
+    <value>شماره مشتری</value>
+  </data>
+  <data name="CustomerManager" xml:space="preserve">
+    <value>مدیریت مشتریان</value>
+  </data>
+  <data name="Customers" xml:space="preserve">
+    <value>مشتری‌ها</value>
+  </data>
+  <data name="Dark" xml:space="preserve">
+    <value>تاریک</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>داشبورد</value>
+  </data>
+  <data name="Debt" xml:space="preserve">
+    <value>مانده بدهی</value>
+  </data>
+  <data name="DebtStatus" xml:space="preserve">
+    <value>وضعیت صورتحساب</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>آدرس ایمیل</value>
+  </data>
+  <data name="Employee" xml:space="preserve">
+    <value>پرسنل</value>
+  </data>
+  <data name="EmployeeID" xml:space="preserve">
+    <value>شماره پرسنل</value>
+  </data>
+  <data name="EmployeeManager" xml:space="preserve">
+    <value>مدیریت پرسنل</value>
+  </data>
+  <data name="Employees" xml:space="preserve">
+    <value>کارمندان</value>
+  </data>
+  <data name="EntryDateTime" xml:space="preserve">
+    <value>تاریخ ورود به انبار</value>
+  </data>
+  <data name="Factor" xml:space="preserve">
+    <value>فاکتور</value>
+  </data>
+  <data name="FactorID" xml:space="preserve">
+    <value>شماره فاکتور</value>
+  </data>
+  <data name="FactorManager" xml:space="preserve">
+    <value>مدیریت فاکتورها</value>
+  </data>
+  <data name="FactorProduct" xml:space="preserve">
+    <value>کالای فاکتور</value>
+  </data>
+  <data name="FactorProducts" xml:space="preserve">
+    <value>کالاهای فاکتور</value>
+  </data>
+  <data name="Factors" xml:space="preserve">
+    <value>فاکتورها</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>نام</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>نام و نام خانوادگی</value>
+  </data>
+  <data name="Fund" xml:space="preserve">
+    <value>تنخواه</value>
+  </data>
+  <data name="FundDescription" xml:space="preserve">
+    <value>شرح هزینه</value>
+  </data>
+  <data name="FundID" xml:space="preserve">
+    <value>شماره تنخواه</value>
+  </data>
+  <data name="FundManager" xml:space="preserve">
+    <value>مدیریت تنخواه‌ها</value>
+  </data>
+  <data name="Funds" xml:space="preserve">
+    <value>تنخواه‌ها</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>آیدی یکتا</value>
+  </data>
+  <data name="InsertDateTime" xml:space="preserve">
+    <value>تاریخ ثبت</value>
+  </data>
+  <data name="InsuranceCode" xml:space="preserve">
+    <value>کد بیمه</value>
+  </data>
+  <data name="Invoice" xml:space="preserve">
+    <value>صورتحساب</value>
+  </data>
+  <data name="InvoiceID" xml:space="preserve">
+    <value>شماره صورتحساب</value>
+  </data>
+  <data name="InvoiceManager" xml:space="preserve">
+    <value>مدیریت صورتحساب‌ها</value>
+  </data>
+  <data name="Invoices" xml:space="preserve">
+    <value>صورتحساب‌ها</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>نام خانوادگی</value>
+  </data>
+  <data name="LeaveCount" xml:space="preserve">
+    <value>تعداد مرخصی</value>
+  </data>
+  <data name="LeavingTheWarehouseDateTime" xml:space="preserve">
+    <value>تاریخ خروج از انبار</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>روشن</value>
+  </data>
+  <data name="ListOf" xml:space="preserve">
+    <value>فهرست</value>
+  </data>
+  <data name="Minerals" xml:space="preserve">
+    <value>مواد معدنی</value>
+  </data>
+  <data name="Mission" xml:space="preserve">
+    <value>مأموریت</value>
+  </data>
+  <data name="MissionDateTime" xml:space="preserve">
+    <value>تاریخ مأموریت</value>
+  </data>
+  <data name="MissionDescription" xml:space="preserve">
+    <value>شرح مأموریت</value>
+  </data>
+  <data name="MissionID" xml:space="preserve">
+    <value>شماره مأموریت</value>
+  </data>
+  <data name="MissionManager" xml:space="preserve">
+    <value>مدیریت مأموریت‌ها</value>
+  </data>
+  <data name="MissionName" xml:space="preserve">
+    <value>عنوان مأموریت</value>
+  </data>
+  <data name="Missions" xml:space="preserve">
+    <value>مأموریت‌ها</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>نام</value>
+  </data>
+  <data name="NationalCode" xml:space="preserve">
+    <value>کدملی</value>
+  </data>
+  <data name="NewUser" xml:space="preserve">
+    <value>کاربر جدید</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>مبلغ پرداخت شده</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>گذرواژه</value>
+  </data>
+  <data name="Personnel" xml:space="preserve">
+    <value>پرسنل</value>
+  </data>
+  <data name="PersonnelCode" xml:space="preserve">
+    <value>کد پرسنلی</value>
+  </data>
+  <data name="PersonnelEntryDateTime" xml:space="preserve">
+    <value>تاریخ عضویت</value>
+  </data>
+  <data name="PersonnelID" xml:space="preserve">
+    <value>شماره پرسنل</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>کد پستی</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>کالا</value>
+  </data>
+  <data name="ProductCategory" xml:space="preserve">
+    <value>نوع کالا</value>
+  </data>
+  <data name="ProductCount" xml:space="preserve">
+    <value>تعداد</value>
+  </data>
+  <data name="ProductID" xml:space="preserve">
+    <value>شماره کالا</value>
+  </data>
+  <data name="ProductManager" xml:space="preserve">
+    <value>مدیریت کالاها</value>
+  </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>نام کالا</value>
+  </data>
+  <data name="ProductOrigin" xml:space="preserve">
+    <value>مبدأ کالا</value>
+  </data>
+  <data name="ProductPrice" xml:space="preserve">
+    <value>قیمت</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>کالاها</value>
+  </data>
+  <data name="ReceiptNumber" xml:space="preserve">
+    <value>شماره رسید</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>مرا به خاطر داشته باش</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>نقش</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>نقش‌ها</value>
+  </data>
+  <data name="RowNumber" xml:space="preserve">
+    <value>ردیف</value>
+  </data>
+  <data name="Salaries" xml:space="preserve">
+    <value>حقوق و دستمزدها</value>
+  </data>
+  <data name="Salary" xml:space="preserve">
+    <value>حقوق</value>
+  </data>
+  <data name="SalaryEntryDateTime" xml:space="preserve">
+    <value>تاریخ و ساعت ورود</value>
+  </data>
+  <data name="SalaryExitDateTime" xml:space="preserve">
+    <value>تاریخ و ساعت خروج</value>
+  </data>
+  <data name="SalaryID" xml:space="preserve">
+    <value>شماره حقوق</value>
+  </data>
+  <data name="SalaryManager" xml:space="preserve">
+    <value>مدیریت حقوق و دستمزد</value>
+  </data>
+  <data name="SalesExpert" xml:space="preserve">
+    <value>کارشناس فروش</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>جستجو</value>
+  </data>
+  <data name="SeeFactors" xml:space="preserve">
+    <value>مشاهده فاکتورها</value>
+  </data>
+  <data name="SelectAnItem" xml:space="preserve">
+    <value>گزینه‌ای را انتخاب نمایید</value>
+  </data>
+  <data name="TellNumber" xml:space="preserve">
+    <value>شماره همراه</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>مبلغ کل</value>
+  </data>
+  <data name="UpdateDateTime" xml:space="preserve">
+    <value>تاریخ بروزرسانی</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>کاربر</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>شناسه کاربری</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>کاربران</value>
+  </data>
+  <data name="UsersManager" xml:space="preserve">
+    <value>مدیریت کاربران</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>نسخه</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>مشاهده</value>
+  </data>
+  <data name="Vitamins" xml:space="preserve">
+    <value>مواد ویتامینی</value>
+  </data>
+  <data name="WarehouseInventory" xml:space="preserve">
+    <value>موجودی انبار</value>
+  </data>
+  <data name="Warehouseman" xml:space="preserve">
+    <value>انباردار</value>
+  </data>
+</root>

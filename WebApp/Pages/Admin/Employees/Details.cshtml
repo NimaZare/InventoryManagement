@@ -1,0 +1,98 @@
+﻿@page
+@model WebApp.Pages.Admin.Employees.DetailsModel
+
+@{
+    var pageTitle = $"{Resources.ButtonCaptions.Details} {Resources.DataDictionary.Employee}";
+    ViewData["Title"] = pageTitle;
+}
+
+<partial name="PartialViews/_DisplayPageMessages" />
+<partial name="PartialViews/_DisplayToastMessages" />
+
+<div class="container my-0 my-sm-1 my-md-3 my-lg-4">
+    <div class="row">
+        <fieldset disabled>
+            <legend>
+                @(pageTitle)
+            </legend>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EmployeeViewModel.PersonnelCode)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EmployeeViewModel.PersonnelCode)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EmployeeViewModel.FullName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EmployeeViewModel.FullName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EmployeeViewModel.BirthDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.EmployeeViewModel.BirthDateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EmployeeViewModel.NationalCode)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EmployeeViewModel.NationalCode)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EmployeeViewModel.TellNumber)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EmployeeViewModel.TellNumber)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EmployeeViewModel.Address)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EmployeeViewModel.Address)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EmployeeViewModel.PostCode)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EmployeeViewModel.PostCode)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EmployeeViewModel.PersonnelEntryDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.EmployeeViewModel.PersonnelEntryDateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EmployeeViewModel.InsuranceCode)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EmployeeViewModel.InsuranceCode)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EmployeeViewModel.UpdateDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.EmployeeViewModel.UpdateDateTime.ToString("HH:mm:ss yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EmployeeViewModel.InsertDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.EmployeeViewModel.InsertDateTime.ToString("HH:mm:ss yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+            </dl>
+        </fieldset>
+        <div>
+            <a asp-page="./Edit" class="text-decoration-none btn btn-primary" asp-route-id="@Model.EmployeeViewModel.ID">
+                @(Resources.ButtonCaptions.Edit)
+            </a>
+            &nbsp;
+            <a asp-page="Index" class="text-decoration-none">
+                @(Resources.ButtonCaptions.BackToList)
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿@model IList<FactorProduct>
+
+<dt class="col-sm-2">
+    @(Resources.DataDictionary.FactorProducts)
+</dt>
+<dd class="col-sm-10">
+    <table class="table border">
+        <tr>
+            <th>
+                @(Resources.DataDictionary.ProductID)
+            </th>
+            <th>
+                @(Resources.DataDictionary.ProductName)
+            </th>
+            <th>
+                @(Resources.DataDictionary.ProductPrice)
+            </th>
+            <th>
+                @(Resources.DataDictionary.ProductCount)
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(item.ProductID)
+                </td>
+                <td>
+                    @(item.Product.ProductName)
+                </td>
+                <td>
+                    @(item.ProductPrice)
+                </td>
+                <td>
+                    @(item.ProductCount)
+                </td>
+            </tr>
+        }
+    </table>
+</dd>

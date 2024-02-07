@@ -1,0 +1,99 @@
+﻿@page
+@model WebApp.Pages.Admin.Products.DetailsModel
+
+@{
+    var pageTitle = $"{Resources.ButtonCaptions.Details} {Resources.DataDictionary.Product}";
+    ViewData["Title"] = pageTitle;
+}
+
+<partial name="PartialViews/_DisplayPageMessages" />
+<partial name="PartialViews/_DisplayToastMessages" />
+
+<div class="container my-0 my-sm-1 my-md-3 my-lg-4">
+    <div class="row">
+        <fieldset disabled>
+            <legend>
+                @(pageTitle)
+            </legend>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ProductViewModel.Category)
+                </dt>
+                <dd class="col-sm-10">
+                    @if (Model.ProductViewModel.Category == ProductCategories.Vitamins)
+                    {
+                        @(DataDictionary.Vitamins)
+                    }
+                    else
+                    {
+                        @(DataDictionary.Minerals)
+                    }
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ProductViewModel.ProductName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ProductViewModel.ProductName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ProductViewModel.Count)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ProductViewModel.Count)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ProductViewModel.ProductOrigin)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ProductViewModel.ProductOrigin)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ProductViewModel.ReceiptNumber)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ProductViewModel.ReceiptNumber)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ProductViewModel.EntryDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.ProductViewModel.EntryDateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ProductViewModel.LeavingTheWarehouseDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.ProductViewModel.LeavingTheWarehouseDateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ProductViewModel.ClearanceDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.ProductViewModel.ClearanceDateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ProductViewModel.UpdateDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.ProductViewModel.UpdateDateTime.ToString("HH:mm:ss yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ProductViewModel.InsertDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.ProductViewModel.InsertDateTime.ToString("HH:mm:ss yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+            </dl>
+        </fieldset>
+        <div>
+            <a asp-page="./Edit" class="text-decoration-none btn btn-primary" asp-route-id="@Model.ProductViewModel.ID">
+                @(Resources.ButtonCaptions.Edit)
+            </a>
+            &nbsp;
+            <a asp-page="Index" class="text-decoration-none">
+                @(Resources.ButtonCaptions.BackToList)
+            </a>
+        </div>
+    </div>
+</div>

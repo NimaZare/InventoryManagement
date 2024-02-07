@@ -1,0 +1,56 @@
+﻿@page
+@model WebApp.Pages.Admin.Missions.DeleteModel
+
+@{
+    var pageTitle = $"{Resources.ButtonCaptions.Delete} {Resources.DataDictionary.Mission}";
+    ViewData["Title"] = pageTitle;
+}
+
+<partial name="PartialViews/_DisplayPageMessages" />
+<partial name="PartialViews/_DisplayToastMessages" />
+
+<div class="container my-0 my-sm-1 my-md-3 my-lg-5">
+    <div class="row">
+        <fieldset disabled>
+            <legend>
+                @(Resources.Messages.ConfirmDelete)
+            </legend>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MissionViewModel.MissionName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.MissionViewModel.MissionName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MissionViewModel.MissionDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.MissionViewModel.MissionDateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MissionViewModel.MissionDescription)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.MissionViewModel.MissionDescription)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MissionViewModel.InsertDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.MissionViewModel.InsertDateTime.ToString("HH:mm:ss yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+            </dl>
+        </fieldset>
+        <hr />
+        <form method="post">
+            <input type="hidden" asp-for="MissionViewModel.ID" />
+            <input type="submit" value="@(pageTitle)" class="btn btn-danger" />
+            &nbsp;
+            <a asp-page="Index" class="text-decoration-none">
+                @(Resources.ButtonCaptions.BackToList)
+            </a>
+        </form>
+    </div>
+</div>

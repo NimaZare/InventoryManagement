@@ -1,0 +1,99 @@
+﻿@page
+@model WebApp.Pages.Admin.Users.DeleteModel
+
+@{
+    var pageTitle = $"{Resources.ButtonCaptions.Delete} {Resources.DataDictionary.User}";
+    ViewData["Title"] = pageTitle;
+}
+
+<partial name="PartialViews/_DisplayPageMessages" />
+<partial name="PartialViews/_DisplayToastMessages" />
+
+<div class="container my-0 my-sm-1 my-md-3 my-lg-5">
+    <div class="row">
+        <fieldset disabled>
+            <legend>
+                @(Resources.Messages.ConfirmDelete)
+            </legend>
+
+            <hr />
+
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.UserViewModel.FirstName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.UserViewModel.FirstName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.UserViewModel.LastName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.UserViewModel.LastName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.UserViewModel.Role)
+                </dt>
+                <dd class="col-sm-10">
+                    @if (Model.UserViewModel.Role == UserRoles.Administrator)
+                    {
+                        @(DataDictionary.Administrator)
+                    }
+                    else if (Model.UserViewModel.Role == UserRoles.Accountant)
+                    {
+                        @(DataDictionary.Accountant)
+                    }
+                    else if (Model.UserViewModel.Role == UserRoles.Warehouseman)
+                    {
+                        @(DataDictionary.Warehouseman)
+                    }
+                    else if (Model.UserViewModel.Role == UserRoles.SalesExpert)
+                    {
+                        @(DataDictionary.SalesExpert)
+                    }
+                    else if (Model.UserViewModel.Role == UserRoles.Collector)
+                    {
+                        @(DataDictionary.Collector)
+                    }
+                    else
+                    {
+                        @(DataDictionary.NewUser)
+                    }
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.UserViewModel.Username)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.UserViewModel.Username)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.UserViewModel.EmailAddress)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.UserViewModel.EmailAddress)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.UserViewModel.TellNumber)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.UserViewModel.TellNumber)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.UserViewModel.InsertDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.UserViewModel.InsertDateTime.ToString("HH:mm:ss yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+            </dl>
+        </fieldset>
+        <hr />
+        <form method="post">
+            <input type="hidden" asp-for="UserViewModel.ID" />
+            <input type="submit" value="@(pageTitle)" class="btn btn-danger" />
+            &nbsp;
+            <a asp-page="Index" class="text-decoration-none">
+                @(Resources.ButtonCaptions.BackToList)
+            </a>
+        </form>
+    </div>
+</div>

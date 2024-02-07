@@ -1,0 +1,111 @@
+﻿@page
+@model WebApp.Pages.Admin.Users.EditModel
+
+@{
+    var pageTitle = $"{Resources.ButtonCaptions.Edit} {Resources.DataDictionary.User}";
+    ViewData["Title"] = pageTitle;
+}
+
+<partial name="PartialViews/_DisplayPageMessages" />
+<partial name="PartialViews/_DisplayToastMessages" />
+
+<form method="post">
+    <div class="container my-0 my-sm-1 my-md-2 my-lg-2">
+        <div class="row">
+            <div class="col-12 p-3 col-md-8 offset-md-2 p-md-4 col-lg-6 offset-lg-3 p-lg-5 border border-2 rounded-3 shadow-lg">
+                <fieldset>
+                    <legend class="text-center">
+                        @(pageTitle)
+                    </legend>
+
+                    <hr />
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="UserViewModel.FirstName" class="control-label"></label>
+                        <input asp-for="UserViewModel.FirstName" class="form-control" />
+                        <span asp-validation-for="UserViewModel.FirstName" class="text-danger"></span>
+                    </div>
+                    &ensp;
+                    <div class="form-group">
+                        <label asp-for="UserViewModel.LastName" class="control-label"></label>
+                        <input asp-for="UserViewModel.LastName" class="form-control" />
+                        <span asp-validation-for="UserViewModel.LastName" class="text-danger"></span>
+                    </div>
+                    &ensp;
+                    <div class="form-group">
+                        <label asp-for="UserViewModel.Role" class="control-label"></label>
+                        <select asp-for="UserViewModel.Role" class="form-control" asp-items="ViewBag.AllRoles">
+                            @if (Model.UserViewModel.Role == UserRoles.Administrator)
+                            {
+                                <option value="@UserRoles.Administrator" selected>@DataDictionary.Administrator</option>
+                            }
+                            else if (Model.UserViewModel.Role == UserRoles.Accountant)
+                            {
+                                <option value="@UserRoles.Accountant" selected>@DataDictionary.Accountant</option>
+                            }
+                            else if (Model.UserViewModel.Role == UserRoles.Warehouseman)
+                            {
+                                <option value="@UserRoles.Warehouseman" selected>@DataDictionary.Warehouseman</option>
+                            }
+                            else if (Model.UserViewModel.Role == UserRoles.SalesExpert)
+                            {
+                                <option value="@UserRoles.SalesExpert" selected>@DataDictionary.SalesExpert</option>
+                            }
+                            else if (Model.UserViewModel.Role == UserRoles.Collector)
+                            {
+                                <option value="@UserRoles.Collector" selected>@DataDictionary.Collector</option>
+                            }
+                            else
+                            {
+                                <option value="@UserRoles.NewUser" selected>@DataDictionary.NewUser</option>
+                            }
+                        </select>
+                        <span asp-validation-for="UserViewModel.Role" class="text-danger"></span>
+                    </div>
+                    <input type="hidden" asp-for="UserViewModel.ID" />
+                    &ensp;
+                    <div class="form-group">
+                        <label asp-for="UserViewModel.Username" class="control-label"></label>
+                        <input asp-for="UserViewModel.Username" class="form-control" />
+                        <span asp-validation-for="UserViewModel.Username" class="text-danger"></span>
+                    </div>
+                    &ensp;
+                    <div class="form-group">
+                        <label asp-for="UserViewModel.EmailAddress" class="control-label"></label>
+                        <input asp-for="UserViewModel.EmailAddress" class="form-control" />
+                        <span asp-validation-for="UserViewModel.EmailAddress" class="text-danger"></span>
+                    </div>
+                    &ensp;
+                    <div class="form-group">
+                        <label asp-for="UserViewModel.TellNumber" class="control-label"></label>
+                        <input asp-for="UserViewModel.TellNumber" class="form-control" />
+                        <span asp-validation-for="UserViewModel.TellNumber" class="text-danger"></span>
+                    </div>
+                </fieldset>
+
+                <hr class="mt-4" />
+
+                <div class="text-center">
+                    <div class="d-grid gap-2 mb-3">
+                        <input type="submit" value="@(pageTitle)" class="btn btn-primary" />
+                    </div>
+                    &ensp;
+                    <div>
+                        <a asp-page="Index" class="text-decoration-none">
+                            @(Resources.ButtonCaptions.BackToList)
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

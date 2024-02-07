@@ -1,0 +1,121 @@
+﻿@page
+@model WebApp.Pages.Admin.Customers.DetailsModel
+
+@{
+    var pageTitle = $"{Resources.ButtonCaptions.Details} {Resources.DataDictionary.Customer}";
+    ViewData["Title"] = pageTitle;
+    int tableIndex = 1;
+}
+
+<partial name="PartialViews/_DisplayPageMessages" />
+<partial name="PartialViews/_DisplayToastMessages" />
+
+<div class="container my-0 my-sm-2 my-md-3 my-lg-4">
+    <div class="row">
+        <fieldset disabled>
+            <legend>
+                @(pageTitle)
+            </legend>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CustomerViewModel.FirstName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.CustomerViewModel.FirstName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CustomerViewModel.LastName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.CustomerViewModel.LastName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CustomerViewModel.NationalCode)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.CustomerViewModel.NationalCode)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CustomerViewModel.TellNumber)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.CustomerViewModel.TellNumber)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CustomerViewModel.Address)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.CustomerViewModel.Address)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CustomerViewModel.UpdateDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.CustomerViewModel.UpdateDateTime.ToString("HH:mm:ss yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CustomerViewModel.InsertDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.CustomerViewModel.InsertDateTime.ToString("HH:mm:ss yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+            </dl>
+        </fieldset>
+    </div>
+    <div>
+        <a asp-page="./Edit" class="text-decoration-none btn btn-primary" asp-route-id="@Model.CustomerViewModel.ID">
+            @(Resources.ButtonCaptions.Edit)
+        </a>
+        &nbsp;
+        <a asp-page="Index" class="text-decoration-none">
+            @(Resources.ButtonCaptions.BackToList)
+        </a>
+    </div>
+    &nbsp;
+    <hr />
+    &nbsp;
+    <div>
+        <fieldset>
+            <legend>
+                @(Resources.DataDictionary.CustomerFactorsList)
+            </legend>
+            &nbsp;
+            <table class="table align-items-center">
+                <thead class="text-center">
+                    <tr>
+                        <th>
+                            @(Resources.DataDictionary.RowNumber)
+                        </th>
+                        <th>
+                            @(Resources.DataDictionary.FactorID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FactorsViewModel[0].TotalAmount)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    @if (Model.FactorsViewModel.Count >= 1)
+                    {
+                        @foreach (var item in Model.FactorsViewModel)
+                        {
+                            <tr>
+                                <td>
+                                    @(tableIndex)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TotalAmount)
+                                </td>
+                            </tr>
+                            tableIndex++;
+                        }
+                    }
+                </tbody>
+            </table>
+        </fieldset>
+    </div>
+</div>

@@ -1,0 +1,113 @@
+﻿@page
+@model Server.Pages.Security.RegisterModel
+@{
+	var pageTitle = Resources.PageTitles.Register;
+	ViewData["Title"] = pageTitle;
+
+	if (System.Threading.Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft)
+	{
+		Layout = "Layouts/Rtl/_Security";
+	}
+	else
+	{
+		Layout = "Layouts/Ltr/_Security";
+	}
+}
+
+<partial name="PartialViews/_DisplayPageMessages" />
+<partial name="PartialViews/_DisplayToastMessages" />
+
+<form method="post">
+	<div class="container my-0 my-sm-1 my-md-3 my-lg-5">
+		<div class="row">
+			<div class="col-12 p-3 col-md-8 offset-md-2 p-md-4 col-lg-6 offset-lg-3 p-lg-5 border border-2 rounded-3 shadow-lg">
+				<fieldset>
+					<legend class="text-center">
+						@(pageTitle)
+					</legend>
+
+					<hr />
+
+					<div class="mb-3">
+						<label asp-for="RegisterViewModel.FirstName" class="form-label"></label>
+						<div class="input-group">
+							<div class="input-group-text"><i class="bi bi-person-circle"></i></div>
+							<input asp-for="RegisterViewModel.FirstName" class="form-control" />
+						</div>
+						<span asp-validation-for="RegisterViewModel.FirstName" class="text-danger"></span>
+					</div>
+
+					<div class="mb-3">
+						<label asp-for="RegisterViewModel.LastName" class="form-label"></label>
+						<div class="input-group">
+							<div class="input-group-text"><i class="bi bi-people-fill"></i></div>
+							<input asp-for="RegisterViewModel.LastName" class="form-control" />
+						</div>
+						<span asp-validation-for="RegisterViewModel.LastName" class="text-danger"></span>
+					</div>
+
+					<div class="mb-3">
+						<label asp-for="RegisterViewModel.Username" class="form-label"></label>
+						<div class="input-group">
+							<div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+							<input asp-for="RegisterViewModel.Username" class="form-control" dir="ltr" />
+						</div>
+						<span asp-validation-for="RegisterViewModel.Username" class="text-danger"></span>
+					</div>
+
+					<div class="mb-3">
+						<label asp-for="RegisterViewModel.Password" class="form-label"></label>
+						<div class="input-group">
+							<div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
+							<input asp-for="RegisterViewModel.Password" class="form-control" dir="ltr" />
+						</div>
+						<span asp-validation-for="RegisterViewModel.Password" class="text-danger"></span>
+					</div>
+
+					<div class="mb-3">
+						<label asp-for="RegisterViewModel.ConfirmPassword" class="form-label"></label>
+						<div class="input-group">
+							<div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
+							<input asp-for="RegisterViewModel.ConfirmPassword" class="form-control" dir="ltr" />
+						</div>
+						<span asp-validation-for="RegisterViewModel.ConfirmPassword" class="text-danger"></span>
+					</div>
+
+					<div class="mb-3">
+						<label asp-for="RegisterViewModel.EmailAddress" class="form-label"></label>
+						<div class="input-group">
+							<div class="input-group-text"><i class="bi bi-envelope-at-fill"></i></div>
+							<input asp-for="RegisterViewModel.EmailAddress" class="form-control" dir="ltr" />
+						</div>
+						<span asp-validation-for="RegisterViewModel.EmailAddress" class="text-danger"></span>
+					</div>
+
+					<div class="mb-3">
+						<label asp-for="RegisterViewModel.TellNumber" class="form-label"></label>
+						<div class="input-group">
+							<div class="input-group-text"><i class="bi bi-phone-fill"></i></i></div>
+							<input asp-for="RegisterViewModel.TellNumber" class="form-control" dir="ltr" />
+						</div>
+						<span asp-validation-for="RegisterViewModel.TellNumber" class="text-danger"></span>
+					</div>
+
+					<div class="mb-3">
+						<button type="submit" class="btn btn-primary">@(Resources.ButtonCaptions.Register)</button>
+						<button type="reset" class="btn btn-secondary">@(Resources.ButtonCaptions.Reset)</button>
+					</div>
+				</fieldset>
+
+				<hr class="mt-4" />
+
+				<div class="text-center">
+					<a asp-page="Login" class="text-decoration-none">@(Resources.ButtonCaptions.Login)</a>
+					<span>   </span>
+					<a asp-page="/Index" class="text-decoration-none">
+						@(Resources.ButtonCaptions.Home)
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</form>

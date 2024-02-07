@@ -1,0 +1,62 @@
+﻿@page
+@model WebApp.Pages.Admin.Missions.DetailsModel
+
+@{
+    var pageTitle = $"{Resources.ButtonCaptions.Details} {Resources.DataDictionary.Mission}";
+    ViewData["Title"] = pageTitle;
+}
+
+<partial name="PartialViews/_DisplayPageMessages" />
+<partial name="PartialViews/_DisplayToastMessages" />
+
+<div class="container my-0 my-sm-1 my-md-3 my-lg-4">
+    <div class="row">
+        <fieldset disabled>
+            <legend>
+                @(pageTitle)
+            </legend>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MissionViewModel.MissionName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.MissionViewModel.MissionName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MissionViewModel.MissionDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.MissionViewModel.MissionDateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MissionViewModel.MissionDescription)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.MissionViewModel.MissionDescription)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MissionViewModel.UpdateDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.MissionViewModel.UpdateDateTime.ToString("HH:mm:ss yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MissionViewModel.InsertDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.MissionViewModel.InsertDateTime.ToString("HH:mm:ss yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+            </dl>
+        </fieldset>
+        <div>
+            <a asp-page="./Edit" class="text-decoration-none btn btn-primary" asp-route-id="@Model.MissionViewModel.ID">
+                @(Resources.ButtonCaptions.Edit)
+            </a>
+            &nbsp;
+            <a asp-page="Index" class="text-decoration-none">
+                @(Resources.ButtonCaptions.BackToList)
+            </a>
+        </div>
+    </div>
+</div>

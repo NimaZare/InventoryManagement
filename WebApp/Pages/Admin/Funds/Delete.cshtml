@@ -1,0 +1,62 @@
+﻿@page
+@model WebApp.Pages.Admin.Funds.DeleteModel
+
+@{
+    var pageTitle = $"{Resources.ButtonCaptions.Delete} {Resources.DataDictionary.Fund}";
+    ViewData["Title"] = pageTitle;
+}
+
+<partial name="PartialViews/_DisplayPageMessages" />
+<partial name="PartialViews/_DisplayToastMessages" />
+
+<div class="container my-0 my-sm-1 my-md-3 my-lg-5">
+    <div class="row">
+        <fieldset disabled>
+            <legend>
+                @(Resources.Messages.ConfirmDelete)
+            </legend>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.FundViewModel.ChargeDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.FundViewModel.ChargeDateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.FundViewModel.BalanceCharge)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.FundViewModel.BalanceCharge)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.FundViewModel.ChargeUsed)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.FundViewModel.ChargeUsed)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.FundViewModel.FundDescription)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.FundViewModel.FundDescription)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.FundViewModel.InsertDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.FundViewModel.InsertDateTime.ToString("HH:mm:ss yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+            </dl>
+        </fieldset>
+        <hr />
+        <form method="post">
+            <input type="hidden" asp-for="FundViewModel.ID" />
+            <input type="submit" value="@(pageTitle)" class="btn btn-danger" />
+            &nbsp;
+            <a asp-page="Index" class="text-decoration-none">
+                @(Resources.ButtonCaptions.BackToList)
+            </a>
+        </form>
+    </div>
+</div>

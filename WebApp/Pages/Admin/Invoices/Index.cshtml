@@ -1,0 +1,109 @@
+﻿@page
+@model WebApp.Pages.Admin.Invoices.IndexModel
+
+@{
+    var pageTitle = $"{Resources.DataDictionary.ListOf} {Resources.DataDictionary.Invoice}";
+    ViewData["Title"] = pageTitle;
+    int tableIndex = 1;
+}
+
+<partial name="PartialViews/_DisplayPageMessages" />
+<partial name="PartialViews/_DisplayToastMessages" />
+
+<br />
+<h3 class="mb-3 text-center">
+    @(pageTitle)
+</h3>
+<hr class="mt-4" />
+<a asp-page="Create" class="btn btn-primary">
+    <i class="mx-1 bi bi-plus-square"></i>
+    @(Resources.ButtonCaptions.Create) @(Resources.DataDictionary.Invoice)
+</a>
+
+<br />
+<br />
+<form>
+    <div class="form-group row col-5">
+        <div class="input-group my-2">
+            <button type="submit" class="input-group-text btn btn-info col-3"><i class="bi bi-search"></i>&ensp; @(Resources.DataDictionary.Search)</button>
+            <input type="text" asp-for="SearchDebt" class="form-control" placeholder="@(Resources.DataDictionary.Debt)" />
+        </div>
+    </div>
+</form>
+<br />
+<br />
+
+<table class="table">
+    <thead class="text-center">
+        <tr>
+            <th>
+                @(Resources.DataDictionary.RowNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InvoiceViewModel[0].Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InvoiceViewModel[0].FactorsTotalAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InvoiceViewModel[0].Paid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InvoiceViewModel[0].Debt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InvoiceViewModel[0].InsertDateTime)
+            </th>
+            <th>
+                @(Resources.DataDictionary.Actions)
+            </th>
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        @if(Model.InvoiceViewModel.Any())
+        {
+            @foreach (var item in Model.InvoiceViewModel)
+            {
+                <tr>
+                    <td>
+                        @(tableIndex)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FactorsTotalAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Paid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Debt)
+                    </td>
+                    <td>
+                        @(item.InsertDateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.ID" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="@(Resources.Messages.ToolTipEdit)" class="text-decoration-none">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <a asp-page="./Details" asp-route-id="@item.ID" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="@(Resources.Messages.ToolTipInfo)" class="text-decoration-none">
+                            <i class="bi bi-info-circle-fill"></i>
+                        </a>
+                        <a asp-page="./Delete" asp-route-id="@item.ID" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="@(Resources.Messages.ToolTipDelete)" class="text-decoration-none">
+                            <i class="bi bi-trash3-fill"></i>
+                        </a>
+                        <a asp-page="./Checkout" asp-route-id="@item.ID" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="@(Resources.Messages.ToolTipCheckout)" class="text-decoration-none">
+                            <i class="bi bi-receipt-cutoff"></i>
+                        </a>
+                    </td>
+                </tr>
+
+                tableIndex++;
+            }
+        }
+    </tbody>
+</table>

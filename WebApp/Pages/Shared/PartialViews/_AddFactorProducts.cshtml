@@ -1,0 +1,67 @@
+﻿@model List<FactorProduct>
+
+@{
+    int tableIndex = 1;
+}
+
+<h3 class="mb-3 text-center">
+    @(Resources.DataDictionary.ListOf) @(Resources.DataDictionary.FactorProducts)
+</h3>
+
+<hr class="mt-4" />
+
+<table class="table">
+    <thead class="text-center">
+        <tr>
+            <th>
+                @(Resources.DataDictionary.RowNumber)
+            </th>
+            <th>
+                @(Resources.DataDictionary.ProductID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].ProductPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].ProductCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].TotalAmount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        @if (Model.Any())
+        {
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>
+                        @(tableIndex)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => product.ProductID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => product.ProductPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => product.ProductCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => product.TotalAmount)
+                    </td>
+                    <td></td>
+                </tr>
+
+                tableIndex++;
+            }
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>@(DataDictionary.AllTotalAmount): &ensp; @(Model.Sum(p => p.TotalAmount).ToString("##,0"))</td>
+        </tr>
+    </tfoot>
+</table>

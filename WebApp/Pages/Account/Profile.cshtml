@@ -1,0 +1,29 @@
+﻿@page
+@model WebApp.Pages.Account.ProfileModel
+@{
+    var pageTitle = Resources.PageTitles.Profile;
+    ViewData["Title"] = pageTitle;
+}
+
+<div>
+    <h1>
+        @(Resources.PageTitles.Profile)
+    </h1>
+
+    @if (User == null || User.Identity == null)
+    {
+        return;
+    }
+
+    <ul>
+        <li>
+            @(Resources.DataDictionary.Username): @(User.Identity.Name)
+        </li>
+        &ensp;
+        <li>
+            @(Resources.DataDictionary.Role): @(User.Claims.Where(c => c.Type == ClaimTypes.Role))
+        </li>
+    </ul>
+
+    <hr />
+</div>

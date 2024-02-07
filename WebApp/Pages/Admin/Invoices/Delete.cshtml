@@ -1,0 +1,62 @@
+﻿@page
+@model WebApp.Pages.Admin.Invoices.DeleteModel
+
+@{
+    var pageTitle = $"{Resources.ButtonCaptions.Delete} {Resources.DataDictionary.Invoice}";
+    ViewData["Title"] = pageTitle;
+}
+
+<partial name="PartialViews/_DisplayPageMessages" />
+<partial name="PartialViews/_DisplayToastMessages" />
+
+<div class="container my-0 my-sm-1 my-md-3 my-lg-5">
+    <div class="row">
+        <fieldset disabled>
+            <legend>
+                @(Resources.Messages.ConfirmDelete)
+            </legend>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.InvoiceViewModel.Customer)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.InvoiceViewModel.Customer.FullName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.InvoiceViewModel.FactorsTotalAmount)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.InvoiceViewModel.FactorsTotalAmount)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.InvoiceViewModel.Paid)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.InvoiceViewModel.Paid)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.InvoiceViewModel.Debt)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.InvoiceViewModel.Debt)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.InvoiceViewModel.InsertDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @(Model.InvoiceViewModel.InsertDateTime.ToString("HH:mm:ss yyyy-MM-dd", CultureInfo.InvariantCulture))
+                </dd>
+            </dl>
+        </fieldset>
+        <hr />
+        <form method="post">
+            <input type="hidden" asp-for="InvoiceViewModel.ID" />
+            <input type="submit" value="@(pageTitle)" class="btn btn-danger" />
+            &nbsp;
+            <a asp-page="Index" class="text-decoration-none">
+                @(Resources.ButtonCaptions.BackToList)
+            </a>
+        </form>
+    </div>
+</div>

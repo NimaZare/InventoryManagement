@@ -1,0 +1,91 @@
+﻿@page
+@model WebApp.Pages.Admin.Products.CreateModel
+
+@{
+    var pageTitle = $"{Resources.DataDictionary.Create} {Resources.DataDictionary.Product}";
+    ViewData["Title"] = pageTitle;
+}
+
+<partial name="PartialViews/_DisplayPageMessages" />
+<partial name="PartialViews/_DisplayToastMessages" />
+
+<form method="post">
+    <div class="container my-0 my-sm-1 my-md-2 my-lg-2">
+        <div class="row">
+            <div class="col-12 p-3 col-md-8 offset-md-2 p-md-4 col-lg-6 offset-lg-3 p-lg-5 border border-2 rounded-3 shadow-lg">
+                <fieldset>
+                    <legend class="text-center">
+                        @(pageTitle)
+                    </legend>
+                    <hr />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="ProductViewModel.Category" class="control-label"></label>
+                        <select asp-for="ProductViewModel.Category" class="form-control" asp-items="ViewBag.ProductCategory">
+                            <option value="">@(Resources.DataDictionary.SelectAnItem)</option>
+                        </select>
+                    </div>
+                    &ensp;
+                    <div class="form-group">
+                        <label asp-for="ProductViewModel.ProductName" class="control-label"></label>
+                        <input asp-for="ProductViewModel.ProductName" class="form-control" />
+                        <span asp-validation-for="ProductViewModel.ProductName" class="text-danger"></span>
+                    </div>
+                    &ensp;
+                    <div class="form-group">
+                        <label asp-for="ProductViewModel.Count" class="control-label"></label>
+                        <input asp-for="ProductViewModel.Count" class="form-control" />
+                        <span asp-validation-for="ProductViewModel.Count" class="text-danger"></span>
+                    </div>
+                    &ensp;
+                    <div class="form-group">
+                        <label asp-for="ProductViewModel.ProductOrigin" class="control-label"></label>
+                        <input asp-for="ProductViewModel.ProductOrigin" class="form-control" />
+                        <span asp-validation-for="ProductViewModel.ProductOrigin" class="text-danger"></span>
+                    </div>
+                    &ensp;
+                    <div class="form-group">
+                        <label asp-for="ProductViewModel.ReceiptNumber" class="control-label"></label>
+                        <input asp-for="ProductViewModel.ReceiptNumber" class="form-control" />
+                        <span asp-validation-for="ProductViewModel.ReceiptNumber" class="text-danger"></span>
+                    </div>
+                    &ensp;
+                    <div class="form-group">
+                        <label asp-for="ProductViewModel.EntryDateTime" class="control-label"></label>
+                        <input asp-for="ProductViewModel.EntryDateTime" class="form-control" />
+                        <span asp-validation-for="ProductViewModel.EntryDateTime" class="text-danger"></span>
+                    </div>
+                    &ensp;
+                    <div class="form-group">
+                        <label asp-for="ProductViewModel.LeavingTheWarehouseDateTime" class="control-label"></label>
+                        <input asp-for="ProductViewModel.LeavingTheWarehouseDateTime" class="form-control" />
+                        <span asp-validation-for="ProductViewModel.LeavingTheWarehouseDateTime" class="text-danger"></span>
+                    </div>
+                    &ensp;
+                    <div class="form-group">
+                        <label asp-for="ProductViewModel.ClearanceDateTime" class="control-label"></label>
+                        <input asp-for="ProductViewModel.ClearanceDateTime" class="form-control" />
+                        <span asp-validation-for="ProductViewModel.ClearanceDateTime" class="text-danger"></span>
+                    </div>
+                </fieldset>
+                <hr class="mt-4" />
+                <div class="text-center">
+                    <div class="d-grid gap-2 mb-3">
+                        <input type="submit" value="@(pageTitle)" class="btn btn-primary" />
+                    </div>
+                    <div>
+                        <a asp-page="Index" class="text-decoration-none">
+                            @(Resources.ButtonCaptions.BackToList)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
